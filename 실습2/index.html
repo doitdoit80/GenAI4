@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<title>삼체(三體) 스토리 그래프</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif; background: #0e1116; color: #e6e6e6; overflow: hidden; }
+  #header { position: absolute; top: 12px; left: 16px; z-index: 10; }
+  #header h1 { margin: 0; font-size: 20px; color: #fff; }
+  #header p { margin: 4px 0 0; font-size: 12px; color: #aaa; }
+  #legend { position: absolute; top: 12px; right: 16px; background: rgba(20,24,32,0.85); padding: 10px 14px; border-radius: 8px; font-size: 12px; z-index: 10; border: 1px solid #2a2f3a; }
+  #legend h3 { margin: 0 0 6px; font-size: 13px; color: #fff; }
+  .legend-row { display: flex; align-items: center; gap: 8px; margin: 3px 0; }
+  .legend-shape { width: 14px; height: 14px; }
+  #filters { position: absolute; bottom: 14px; left: 16px; background: rgba(20,24,32,0.85); padding: 10px 14px; border-radius: 8px; font-size: 12px; z-index: 10; border: 1px solid #2a2f3a; }
+  #filters label { display: block; margin: 3px 0; cursor: pointer; }
+  #tooltip { position: absolute; pointer-events: none; background: rgba(15,18,24,0.96); border: 1px solid #3a4150; padding: 10px 12px; border-radius: 6px; font-size: 12px; max-width: 320px; line-height: 1.5; display: none; z-index: 20; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+  #tooltip .tt-title { font-weight: 700; font-size: 13px; color: #fff; margin-bottom: 4px; }
+  #tooltip .tt-meta { color: #8aa0c5; margin-bottom: 6px; font-size: 11px; }
+  svg { width: 100vw; height: 100vh; display: block; cursor: grab; }
+  svg:active { cursor: grabbing; }
+  .link { stroke: #4a5366; stroke-opacity: 0.55; }
+  .link.dim { stroke-opacity: 0.08; }
+  .link.highlight { stroke: #ffd866; stroke-opacity: 0.95; }
+  .link-label { fill: #9aa6b8; font-size: 9px; pointer-events: none; opacity: 0; }
+  .link-label.show { opacity: 1; }
+  .node { cursor: pointer; stroke: #0e1116; stroke-width: 1.5px; }
+  .node.dim { opacity: 0.15; }
+  .node.highlight { stroke: #ffd866; stroke-width: 2.5px; }
+  .node-label { fill: #e6e6e6; font-size: 11px; pointer-events: none; text-anchor: middle; paint-order: stroke; stroke: #0e1116; stroke-width: 3px; stroke-linejoin: round; }
+  .node-label.dim { opacity: 0.2; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>삼체(三體) 스토리 그래프</h1>
+  <p>류츠신 · 지구의 과거 3부작 · 노드를 드래그/클릭, 마우스 휠로 확대</p>
+</div>
+<div id="legend">
+  <h3>범례</h3>
+  <div class="legend-row"><svg class="legend-shape"><circle cx="7" cy="7" r="6" fill="#e74c3c"/></svg>인물 (character)</div>
+  <div class="legend-row"><svg class="legend-shape"><rect x="1" y="1" width="12" height="12" fill="#d35400"/></svg>조직 (organization)</div>
+  <div class="legend-row"><svg class="legend-shape"><polygon points="7,1 13,13 1,13" fill="#8e44ad"/></svg>사건 (event)</div>
+  <div class="legend-row"><svg class="legend-shape"><polygon points="7,1 13,7 7,13 1,7" fill="#1abc9c"/></svg>개념 (concept)</div>
+</div>
+<div id="filters">
+  <h3 style="margin:0 0 6px; font-size:13px; color:#fff;">파트 필터</h3>
+  <label><input type="checkbox" class="part-filter" value="1" checked> 1부 삼체문제</label>
+  <label><input type="checkbox" class="part-filter" value="2" checked> 2부 암흑의 숲</label>
+  <label><input type="checkbox" class="part-filter" value="3" checked> 3부 사신의 영생</label>
+  <label style="margin-top:8px;"><input type="checkbox" id="show-edge-labels"> 관계명 표시</label>
+</div>
+<div id="tooltip"></div>
+<svg></svg>
+<script>
+const TYPE_SHAPE = { character: "circle", organization: "rect", event: "triangle", concept: "diamond" };
+const TYPE_LABEL = { character: "인물", organization: "조직", event: "사건", concept: "개념" };
+
+const svg = d3.select("svg");
+const width = window.innerWidth;
+const height = window.innerHeight;
+const g = svg.append("g");
+
+svg.call(d3.zoom().scaleExtent([0.2, 4]).on("zoom", (e) => g.attr("transform", e.transform)));
+
+const tooltip = d3.select("#tooltip");
+
+d3.json("three_body_graph.json").then(data => {
+  const nodesById = new Map(data.nodes.map(n => [n.id, n]));
+  const links = data.edges.map(e => ({ ...e, source: e.source, target: e.target }));
+
+  const simulation = d3.forceSimulation(data.nodes)
+    .force("link", d3.forceLink(links).id(d => d.id).distance(95).strength(0.6))
+    .force("charge", d3.forceManyBody().strength(-340))
+    .force("center", d3.forceCenter(width / 2, height / 2))
+    .force("collide", d3.forceCollide(28));
+
+  const linkLayer = g.append("g").attr("class", "links");
+  const linkLabelLayer = g.append("g").attr("class", "link-labels");
+  const nodeLayer = g.append("g").attr("class", "nodes");
+  const labelLayer = g.append("g").attr("class", "node-labels");
+
+  const link = linkLayer.selectAll("line")
+    .data(links).enter().append("line")
+    .attr("class", "link")
+    .attr("stroke-width", 1.4);
+
+  const linkLabel = linkLabelLayer.selectAll("text")
+    .data(links).enter().append("text")
+    .attr("class", "link-label")
+    .text(d => d.relation);
+
+  const node = nodeLayer.selectAll("g")
+    .data(data.nodes).enter().append("g")
+    .attr("class", "node-group")
+    .call(d3.drag()
+      .on("start", (e, d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+      .on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; })
+      .on("end", (e, d) => { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; }));
+
+  node.each(function(d) {
+    const sel = d3.select(this);
+    const c = d.color || "#888";
+    if (d.type === "organization") {
+      sel.append("rect").attr("class", "node").attr("width", 22).attr("height", 22).attr("x", -11).attr("y", -11).attr("fill", c).attr("rx", 3);
+    } else if (d.type === "event") {
+      sel.append("polygon").attr("class", "node").attr("points", "0,-13 12,11 -12,11").attr("fill", c);
+    } else if (d.type === "concept") {
+      sel.append("polygon").attr("class", "node").attr("points", "0,-13 13,0 0,13 -13,0").attr("fill", c);
+    } else {
+      sel.append("circle").attr("class", "node").attr("r", 11).attr("fill", c);
+    }
+  });
+
+  node.on("mouseover", (e, d) => {
+      const connected = new Set([d.id]);
+      links.forEach(l => {
+        if (l.source.id === d.id) connected.add(l.target.id);
+        if (l.target.id === d.id) connected.add(l.source.id);
+      });
+      node.classed("dim", n => !connected.has(n.id));
+      label.classed("dim", n => !connected.has(n.id));
+      link.classed("dim", l => l.source.id !== d.id && l.target.id !== d.id)
+          .classed("highlight", l => l.source.id === d.id || l.target.id === d.id);
+
+      tooltip.style("display", "block")
+        .html(`<div class="tt-title">${d.label}</div>
+               <div class="tt-meta">${TYPE_LABEL[d.type]} · ${d.part ? d.part.map(p=>p+"부").join(", ") : ""}${d.faction ? " · " + d.faction : ""}</div>
+               <div>${d.description || ""}</div>`);
+    })
+    .on("mousemove", (e) => {
+      tooltip.style("left", (e.pageX + 14) + "px").style("top", (e.pageY + 14) + "px");
+    })
+    .on("mouseout", () => {
+      node.classed("dim", false);
+      label.classed("dim", false);
+      link.classed("dim", false).classed("highlight", false);
+      tooltip.style("display", "none");
+    });
+
+  const label = labelLayer.selectAll("text")
+    .data(data.nodes).enter().append("text")
+    .attr("class", "node-label")
+    .attr("dy", 22)
+    .text(d => d.label);
+
+  simulation.on("tick", () => {
+    link.attr("x1", d => d.source.x).attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x).attr("y2", d => d.target.y);
+    linkLabel.attr("x", d => (d.source.x + d.target.x)/2).attr("y", d => (d.source.y + d.target.y)/2);
+    node.attr("transform", d => `translate(${d.x},${d.y})`);
+    label.attr("x", d => d.x).attr("y", d => d.y);
+  });
+
+  function applyFilter() {
+    const active = new Set(Array.from(document.querySelectorAll(".part-filter:checked")).map(cb => +cb.value));
+    const visible = new Set(data.nodes.filter(n => !n.part || n.part.some(p => active.has(p))).map(n => n.id));
+    node.style("display", n => visible.has(n.id) ? null : "none");
+    label.style("display", n => visible.has(n.id) ? null : "none");
+    link.style("display", l => visible.has(l.source.id) && visible.has(l.target.id) ? null : "none");
+    linkLabel.style("display", l => visible.has(l.source.id) && visible.has(l.target.id) ? null : "none");
+  }
+  document.querySelectorAll(".part-filter").forEach(cb => cb.addEventListener("change", applyFilter));
+  document.getElementById("show-edge-labels").addEventListener("change", (e) => {
+    linkLabel.classed("show", e.target.checked);
+  });
+}).catch(err => {
+  document.body.insertAdjacentHTML("beforeend",
+    `<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#2a1d1d;padding:20px;border-radius:8px;border:1px solid #c0392b;max-width:520px;">
+      <h3 style="margin-top:0;color:#ff8a80;">JSON 로드 실패</h3>
+      <p>로컬 파일 시스템에서 직접 열면 브라우저 보안 정책으로 fetch가 차단됩니다.</p>
+      <p>같은 폴더에서 간단한 정적 서버를 실행하세요:</p>
+      <pre style="background:#000;padding:8px;border-radius:4px;">cd 실습2
+python3 -m http.server 8000</pre>
+      <p>그 후 <code>http://localhost:8000/index.html</code> 접속.</p>
+      <p style="color:#888;font-size:11px;">에러: ${err.message}</p>
+    </div>`);
+});
+</script>
+</body>
+</html>
