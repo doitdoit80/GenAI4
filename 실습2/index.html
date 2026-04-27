@@ -18,8 +18,8 @@
   #tooltip { position: absolute; pointer-events: none; background: rgba(15,18,24,0.96); border: 1px solid #3a4150; padding: 10px 12px; border-radius: 6px; font-size: 12px; max-width: 320px; line-height: 1.5; display: none; z-index: 20; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
   #tooltip .tt-title { font-weight: 700; font-size: 13px; color: #fff; margin-bottom: 4px; }
   #tooltip .tt-meta { color: #8aa0c5; margin-bottom: 6px; font-size: 11px; }
-  svg { width: 100vw; height: 100vh; display: block; cursor: grab; }
-  svg:active { cursor: grabbing; }
+  #graph { width: 100vw; height: 100vh; display: block; cursor: grab; }
+  #graph:active { cursor: grabbing; }
   .link { stroke: #4a5366; stroke-opacity: 0.55; }
   .link.dim { stroke-opacity: 0.08; }
   .link.highlight { stroke: #ffd866; stroke-opacity: 0.95; }
@@ -52,12 +52,12 @@
   <label style="margin-top:8px;"><input type="checkbox" id="show-edge-labels"> 관계명 표시</label>
 </div>
 <div id="tooltip"></div>
-<svg></svg>
+<svg id="graph"></svg>
 <script>
 const TYPE_SHAPE = { character: "circle", organization: "rect", event: "triangle", concept: "diamond" };
 const TYPE_LABEL = { character: "인물", organization: "조직", event: "사건", concept: "개념" };
 
-const svg = d3.select("svg");
+const svg = d3.select("#graph");
 const width = window.innerWidth;
 const height = window.innerHeight;
 const g = svg.append("g");
