@@ -1,0 +1,483 @@
+{
+  "metadata": {
+    "title": "삼체 (三體, The Three-Body Problem)",
+    "author": "류츠신 (劉慈欣, Liu Cixin)",
+    "series": "지구의 과거 3부작",
+    "parts": ["1부: 삼체문제", "2부: 암흑의 숲", "3부: 사신의 영생"],
+    "description": "류츠신의 SF 3부작 소설의 등장인물, 조직, 사건, 핵심 개념을 그래프 형태로 구조화한 데이터",
+    "language": "ko",
+    "source": "namu.wiki, 웹 검색 자료 종합"
+  },
+  "nodes": [
+    {
+      "id": "ye_wenjie",
+      "label": "예원제",
+      "type": "character",
+      "part": [1, 2, 3],
+      "faction": "ETO",
+      "description": "천체물리학자. 문화대혁명으로 아버지를 잃고 인류에 대한 절망 속에서 삼체 문명에 응답해 ETO를 창설한 인물.",
+      "color": "#c0392b"
+    },
+    {
+      "id": "ye_zhetai",
+      "label": "예저타이",
+      "type": "character",
+      "part": [1],
+      "faction": "지구",
+      "description": "예원제의 아버지. 문화대혁명 중 홍위병 비판투쟁 끝에 사망한 물리학자.",
+      "color": "#7f8c8d"
+    },
+    {
+      "id": "yang_dong",
+      "label": "양둥",
+      "type": "character",
+      "part": [1],
+      "faction": "지구",
+      "description": "예원제의 딸. 물리학자로 '물리학은 존재한 적 없다'는 유서를 남기고 자살하며 1부의 사건을 촉발.",
+      "color": "#7f8c8d"
+    },
+    {
+      "id": "wang_miao",
+      "label": "왕먀오",
+      "type": "character",
+      "part": [1],
+      "faction": "지구",
+      "description": "나노 소재 연구자. 1부의 시점 인물로 과학자 자살 사건과 삼체 게임을 통해 진실을 추적.",
+      "color": "#2980b9"
+    },
+    {
+      "id": "shi_qiang",
+      "label": "스창 (다스)",
+      "type": "character",
+      "part": [1, 2, 3],
+      "faction": "지구",
+      "description": "베이징 경찰, 퇴역군인. 거칠지만 직관이 뛰어나 왕먀오·뤄지·청신을 도우며 시리즈 전체의 조력자.",
+      "color": "#27ae60"
+    },
+    {
+      "id": "luo_ji",
+      "label": "뤄지",
+      "type": "character",
+      "part": [2, 3],
+      "faction": "면벽자",
+      "description": "사회학자 출신 면벽자. 우주 사회학에서 암흑의 숲 이론을 도출, 1대 검잡이로 50년간 인류를 지킴.",
+      "color": "#8e44ad"
+    },
+    {
+      "id": "zhang_beihai",
+      "label": "장베이하이",
+      "type": "character",
+      "part": [2],
+      "faction": "지구함대",
+      "description": "해군 정치장교. 강한 승리주의 신봉자로 위장한 도피주의자. 자연선택호를 탈취해 인류 우주문명의 씨앗을 보존.",
+      "color": "#16a085"
+    },
+    {
+      "id": "yun_tianming",
+      "label": "윈톈밍",
+      "type": "character",
+      "part": [3],
+      "faction": "지구→삼체",
+      "description": "청신을 짝사랑한 시한부 환자. 뇌만 우주로 보내져 삼체에 포획, 동화로 인류에 차원공격 경고를 전달.",
+      "color": "#e67e22"
+    },
+    {
+      "id": "cheng_xin",
+      "label": "청신",
+      "type": "character",
+      "part": [3],
+      "faction": "지구",
+      "description": "항공우주공학자. 계단 계획 입안자이자 2대 검잡이. 인류애로 위협을 못 누르고 인류 멸망을 초래.",
+      "color": "#e74c3c"
+    },
+    {
+      "id": "ai_aa",
+      "label": "아이 AA",
+      "type": "character",
+      "part": [3],
+      "faction": "지구",
+      "description": "청신의 동료이자 친구. 청신의 곁을 지키며 위기의 시대를 함께 보냄.",
+      "color": "#3498db"
+    },
+    {
+      "id": "thomas_wade",
+      "label": "토마스 웨이드",
+      "type": "character",
+      "part": [3],
+      "faction": "PIA",
+      "description": "전 PIA 국장. 냉혹한 현실주의자. 계단 계획·광속우주선 개발 추진, 청신과 대립하지만 인류의 살길을 모색.",
+      "color": "#34495e"
+    },
+    {
+      "id": "trisolaran_lord",
+      "label": "삼체 군주",
+      "type": "character",
+      "part": [1, 2, 3],
+      "faction": "삼체",
+      "description": "삼체 문명의 지도자. 예원제의 신호를 받아 지구 침공 함대를 발진시킴.",
+      "color": "#c0392b"
+    },
+    {
+      "id": "evans",
+      "label": "마이크 에반스",
+      "type": "character",
+      "part": [1],
+      "faction": "ETO",
+      "description": "석유 재벌의 후계자. ETO 강림파의 지도자로 인류 멸절을 원하며 예원제와 함께 조직을 이끔.",
+      "color": "#c0392b"
+    },
+    {
+      "id": "rey_diaz",
+      "label": "레이 디아스",
+      "type": "character",
+      "part": [2],
+      "faction": "면벽자",
+      "description": "전 베네수엘라 대통령. 면벽자 중 한 명. 항성형 수소폭탄 개발을 추진.",
+      "color": "#8e44ad"
+    },
+    {
+      "id": "tyler",
+      "label": "프레드릭 타일러",
+      "type": "character",
+      "part": [2],
+      "faction": "면벽자",
+      "description": "전 미국 국방장관. 면벽자 중 한 명. 양자 함대 자살전략을 구상.",
+      "color": "#8e44ad"
+    },
+    {
+      "id": "hines",
+      "label": "빌 하인스",
+      "type": "character",
+      "part": [2],
+      "faction": "면벽자",
+      "description": "신경과학자 면벽자. 사고 강화 연구를 명목으로 사실상 패배주의 사상강화를 시도.",
+      "color": "#8e44ad"
+    },
+
+    {
+      "id": "red_coast",
+      "label": "홍안기지",
+      "type": "organization",
+      "part": [1],
+      "description": "외계문명 탐사용 중국의 극비 시설. 예원제가 이곳에서 태양 전파증폭을 통해 삼체에 신호를 송신.",
+      "color": "#d35400"
+    },
+    {
+      "id": "eto",
+      "label": "ETO (지구삼체조직)",
+      "type": "organization",
+      "part": [1],
+      "description": "삼체 문명 도래를 추종하는 지구 비밀조직. 강림파(인류 멸절)·구원파·생존파로 분열.",
+      "color": "#c0392b"
+    },
+    {
+      "id": "trisolaris",
+      "label": "삼체 문명",
+      "type": "organization",
+      "part": [1, 2, 3],
+      "description": "켄타우루스자리 알파성계의 외계 문명. 세 항성의 무질서한 운동으로 멸망과 부활을 반복, 지구 정복 시도.",
+      "color": "#c0392b"
+    },
+    {
+      "id": "pdc",
+      "label": "행성방위이사회 (PDC)",
+      "type": "organization",
+      "part": [2, 3],
+      "description": "UN 산하 대(對)삼체 방위 기구. 면벽계획·검잡이 제도를 주관.",
+      "color": "#2c3e50"
+    },
+    {
+      "id": "space_force",
+      "label": "지구 우주함대",
+      "type": "organization",
+      "part": [2, 3],
+      "description": "삼체 함대 요격을 위해 창설된 인류의 우주군. 종말의 전투에서 물방울에 전멸.",
+      "color": "#16a085"
+    },
+
+    {
+      "id": "cultural_revolution",
+      "label": "문화대혁명",
+      "type": "event",
+      "part": [1],
+      "description": "1966년 중국. 예원제의 아버지가 비판투쟁으로 사망, 예원제의 인류혐오와 ETO 창설의 근본 원인.",
+      "color": "#7f8c8d"
+    },
+    {
+      "id": "signal_sent",
+      "label": "삼체 신호 송수신",
+      "type": "event",
+      "part": [1],
+      "description": "예원제가 태양을 전파증폭기로 삼아 삼체에 응답. '오지 마라'는 경고를 무시하고 좌표를 노출.",
+      "color": "#d35400"
+    },
+    {
+      "id": "scientist_suicides",
+      "label": "과학자 연쇄 자살",
+      "type": "event",
+      "part": [1],
+      "description": "지자가 가속기 실험을 교란해 기초물리학을 절망에 빠뜨림. 양둥 등 다수 자살.",
+      "color": "#7f8c8d"
+    },
+    {
+      "id": "three_body_game",
+      "label": "삼체 게임",
+      "type": "event",
+      "part": [1],
+      "description": "ETO가 운영한 VR 게임. 왕먀오가 이 게임을 통해 삼체 세계의 진실을 알아냄.",
+      "color": "#2980b9"
+    },
+    {
+      "id": "guzheng_op",
+      "label": "고금(古琴) 작전",
+      "type": "event",
+      "part": [1],
+      "description": "스창의 발상으로 나노실 '비검'을 이용해 ETO의 유조선 '심판일호'를 절단, 삼체 메시지 회수.",
+      "color": "#27ae60"
+    },
+    {
+      "id": "wallfacer_project",
+      "label": "면벽계획",
+      "type": "event",
+      "part": [2],
+      "description": "지자가 인간의 마음은 읽지 못한다는 점을 이용. 4명의 면벽자에게 비밀 전략 수립 권한 부여.",
+      "color": "#8e44ad"
+    },
+    {
+      "id": "doomsday_battle",
+      "label": "종말의 전투",
+      "type": "event",
+      "part": [2],
+      "description": "지구 우주함대 2천여 척이 삼체 탐사선 '물방울' 한 척에 거의 전멸당함.",
+      "color": "#c0392b"
+    },
+    {
+      "id": "dark_forest_deterrence",
+      "label": "암흑의 숲 위협체계",
+      "type": "event",
+      "part": [2, 3],
+      "description": "뤄지가 좌표 송출 장치로 삼체를 견제. 응답하면 인류·삼체 모두 멸망. 60여 년의 위협의 균형 시작.",
+      "color": "#8e44ad"
+    },
+    {
+      "id": "staircase_program",
+      "label": "계단 계획",
+      "type": "event",
+      "part": [3],
+      "description": "방사능 폭탄 추진으로 윈톈밍의 뇌를 삼체 함대에 투척. 청신·웨이드가 입안.",
+      "color": "#e67e22"
+    },
+    {
+      "id": "cheng_xin_swordholder",
+      "label": "검잡이 교체와 침공",
+      "type": "event",
+      "part": [3],
+      "description": "청신이 2대 검잡이로 취임 후 15분 만에 삼체가 침공. 인류는 호주로 강제 이주.",
+      "color": "#e74c3c"
+    },
+    {
+      "id": "gravity_broadcast",
+      "label": "중력파 방송",
+      "type": "event",
+      "part": [3],
+      "description": "광속함 만유인력호가 삼체 좌표를 우주에 송출. 삼체와 태양계 모두 멸망 운명에 처함.",
+      "color": "#34495e"
+    },
+    {
+      "id": "fairy_tales",
+      "label": "윈톈밍의 동화",
+      "type": "event",
+      "part": [3],
+      "description": "윈톈밍이 청신에게 들려준 세 편의 동화. 광속우주선·차원공격 등 핵심 정보를 은유로 전달.",
+      "color": "#e67e22"
+    },
+    {
+      "id": "dimensional_strike",
+      "label": "차원 공격 (이향박편)",
+      "type": "event",
+      "part": [3],
+      "description": "미지의 외계 문명이 태양계에 '이향박편'을 투척, 3차원 공간을 2차원으로 차원 강하시켜 태양계 멸망.",
+      "color": "#000000"
+    },
+    {
+      "id": "lightspeed_escape",
+      "label": "광속우주선 탈출",
+      "type": "event",
+      "part": [3],
+      "description": "청신과 아이 AA가 별의 선물 행성을 거쳐 광속선 헌터호로 차원공격에서 탈출.",
+      "color": "#3498db"
+    },
+
+    {
+      "id": "three_body_problem_concept",
+      "label": "삼체 문제",
+      "type": "concept",
+      "part": [1],
+      "description": "세 천체의 운동을 일반해로 풀 수 없다는 고전역학 난제. 삼체 세계 환경의 근본 원인.",
+      "color": "#9b59b6"
+    },
+    {
+      "id": "sophon",
+      "label": "지자 (智子)",
+      "type": "concept",
+      "part": [1, 2, 3],
+      "description": "삼체가 보낸 양성자급 인공지능. 지구 기초물리학 봉쇄와 실시간 감시 수행. 인간형 아바타로 등장.",
+      "color": "#1abc9c"
+    },
+    {
+      "id": "wallfacer",
+      "label": "면벽자",
+      "type": "concept",
+      "part": [2],
+      "description": "지자에게 마음을 읽히지 않기 위해 본심을 숨기고 전략을 수립하는 자. 뤄지·장베이하이 등이 임명.",
+      "color": "#8e44ad"
+    },
+    {
+      "id": "wallbreaker",
+      "label": "파벽자",
+      "type": "concept",
+      "part": [2],
+      "description": "ETO가 면벽자의 진의를 추리해 폭로하는 역할. 면벽자별로 한 명씩 배치.",
+      "color": "#c0392b"
+    },
+    {
+      "id": "cosmic_sociology",
+      "label": "우주 사회학",
+      "type": "concept",
+      "part": [2],
+      "description": "예원제가 뤄지에게 제안한 학문. 두 공리(생존, 자원 유한)에서 암흑의 숲 결론이 도출됨.",
+      "color": "#8e44ad"
+    },
+    {
+      "id": "dark_forest",
+      "label": "암흑의 숲 이론",
+      "type": "concept",
+      "part": [2, 3],
+      "description": "우주는 사냥꾼들이 숨죽인 어두운 숲. 자기 위치를 드러내는 문명은 즉시 제거당함.",
+      "color": "#000000"
+    },
+    {
+      "id": "swordholder",
+      "label": "검잡이 제도",
+      "type": "concept",
+      "part": [3],
+      "description": "암흑의 숲 위협 발신 권한을 한 사람이 쥐는 제도. 삼체와 인류 사이의 공포의 균형 유지.",
+      "color": "#8e44ad"
+    },
+    {
+      "id": "droplet",
+      "label": "물방울 (강력우주선)",
+      "type": "concept",
+      "part": [2, 3],
+      "description": "삼체의 강력 상호작용으로 만든 무적의 탐사선. 종말의 전투에서 함대를 전멸시킴.",
+      "color": "#c0392b"
+    },
+    {
+      "id": "two_vector_foil",
+      "label": "이향박편 (二向箔)",
+      "type": "concept",
+      "part": [3],
+      "description": "공간을 3D에서 2D로 강하시키는 차원 무기. 가스 응결 무력화 불가.",
+      "color": "#000000"
+    },
+    {
+      "id": "lightspeed_ship",
+      "label": "광속우주선",
+      "type": "concept",
+      "part": [3],
+      "description": "곡률추진을 이용한 광속 항행. 차원공격에서 살아남는 유일한 방법이지만 인류는 너무 늦게 개발.",
+      "color": "#3498db"
+    },
+    {
+      "id": "stars_our_destination",
+      "label": "별의 선물 (DX3906)",
+      "type": "concept",
+      "part": [3],
+      "description": "윈톈밍이 청신에게 사준 별. 후일 삼체와의 거래로 청신의 사유 행성이 됨.",
+      "color": "#f1c40f"
+    }
+  ],
+  "edges": [
+    { "source": "ye_zhetai", "target": "ye_wenjie", "relation": "부녀", "type": "family" },
+    { "source": "ye_wenjie", "target": "yang_dong", "relation": "모녀", "type": "family" },
+    { "source": "cultural_revolution", "target": "ye_zhetai", "relation": "사망 원인", "type": "causes" },
+    { "source": "cultural_revolution", "target": "ye_wenjie", "relation": "인류 절망의 계기", "type": "causes" },
+    { "source": "ye_wenjie", "target": "red_coast", "relation": "근무", "type": "affiliation" },
+    { "source": "ye_wenjie", "target": "signal_sent", "relation": "주체", "type": "performs" },
+    { "source": "red_coast", "target": "signal_sent", "relation": "장소", "type": "location" },
+    { "source": "signal_sent", "target": "trisolaris", "relation": "지구 좌표 노출", "type": "triggers" },
+
+    { "source": "ye_wenjie", "target": "eto", "relation": "공동 창설자", "type": "founds" },
+    { "source": "evans", "target": "eto", "relation": "강림파 지도자", "type": "leads" },
+    { "source": "trisolaris", "target": "eto", "relation": "신앙 대상", "type": "worshipped_by" },
+
+    { "source": "trisolaris", "target": "sophon", "relation": "제작·파견", "type": "creates" },
+    { "source": "sophon", "target": "scientist_suicides", "relation": "물리학 봉쇄로 유발", "type": "causes" },
+    { "source": "yang_dong", "target": "scientist_suicides", "relation": "포함됨", "type": "instance_of" },
+    { "source": "wang_miao", "target": "scientist_suicides", "relation": "수사 착수", "type": "investigates" },
+    { "source": "wang_miao", "target": "shi_qiang", "relation": "수사 파트너", "type": "ally" },
+    { "source": "wang_miao", "target": "three_body_game", "relation": "플레이로 진실 추적", "type": "investigates" },
+    { "source": "eto", "target": "three_body_game", "relation": "운영", "type": "operates" },
+    { "source": "shi_qiang", "target": "guzheng_op", "relation": "발안·지휘", "type": "performs" },
+    { "source": "guzheng_op", "target": "evans", "relation": "사망", "type": "results_in" },
+
+    { "source": "trisolaris", "target": "three_body_problem_concept", "relation": "환경의 원인", "type": "explained_by" },
+
+    { "source": "pdc", "target": "wallfacer_project", "relation": "수립", "type": "creates" },
+    { "source": "wallfacer_project", "target": "wallfacer", "relation": "역할 정의", "type": "defines" },
+    { "source": "luo_ji", "target": "wallfacer", "relation": "임명", "type": "is_a" },
+    { "source": "rey_diaz", "target": "wallfacer", "relation": "임명", "type": "is_a" },
+    { "source": "tyler", "target": "wallfacer", "relation": "임명", "type": "is_a" },
+    { "source": "hines", "target": "wallfacer", "relation": "임명", "type": "is_a" },
+    { "source": "eto", "target": "wallbreaker", "relation": "지명", "type": "creates" },
+    { "source": "wallbreaker", "target": "wallfacer", "relation": "대응 역할", "type": "counters" },
+
+    { "source": "ye_wenjie", "target": "luo_ji", "relation": "우주 사회학 제안", "type": "mentors" },
+    { "source": "luo_ji", "target": "cosmic_sociology", "relation": "정립", "type": "develops" },
+    { "source": "cosmic_sociology", "target": "dark_forest", "relation": "결론 도출", "type": "leads_to" },
+    { "source": "luo_ji", "target": "dark_forest", "relation": "발견자", "type": "discovers" },
+    { "source": "luo_ji", "target": "dark_forest_deterrence", "relation": "구축·1대 검잡이", "type": "performs" },
+    { "source": "dark_forest_deterrence", "target": "trisolaris", "relation": "협상 강제", "type": "deters" },
+
+    { "source": "zhang_beihai", "target": "space_force", "relation": "정치장교", "type": "affiliation" },
+    { "source": "space_force", "target": "doomsday_battle", "relation": "전멸", "type": "destroyed_in" },
+    { "source": "trisolaris", "target": "droplet", "relation": "제작", "type": "creates" },
+    { "source": "droplet", "target": "doomsday_battle", "relation": "함대 섬멸", "type": "performs" },
+    { "source": "zhang_beihai", "target": "doomsday_battle", "relation": "이전 자연선택호 탈취", "type": "escapes" },
+
+    { "source": "yun_tianming", "target": "cheng_xin", "relation": "짝사랑", "type": "love" },
+    { "source": "yun_tianming", "target": "stars_our_destination", "relation": "선물", "type": "gives" },
+    { "source": "stars_our_destination", "target": "cheng_xin", "relation": "수증자", "type": "owned_by" },
+    { "source": "cheng_xin", "target": "staircase_program", "relation": "입안자", "type": "creates" },
+    { "source": "thomas_wade", "target": "staircase_program", "relation": "추진", "type": "supports" },
+    { "source": "staircase_program", "target": "yun_tianming", "relation": "뇌 송출", "type": "targets" },
+    { "source": "trisolaris", "target": "yun_tianming", "relation": "포획·연구", "type": "captures" },
+    { "source": "yun_tianming", "target": "fairy_tales", "relation": "구술", "type": "creates" },
+    { "source": "fairy_tales", "target": "cheng_xin", "relation": "암호 메시지 전달", "type": "delivers_to" },
+    { "source": "fairy_tales", "target": "lightspeed_ship", "relation": "은유로 시사", "type": "hints_at" },
+    { "source": "fairy_tales", "target": "two_vector_foil", "relation": "은유로 경고", "type": "hints_at" },
+
+    { "source": "cheng_xin", "target": "swordholder", "relation": "2대 검잡이", "type": "is_a" },
+    { "source": "luo_ji", "target": "swordholder", "relation": "1대 검잡이", "type": "is_a" },
+    { "source": "cheng_xin", "target": "cheng_xin_swordholder", "relation": "위협 행사 실패", "type": "causes" },
+    { "source": "cheng_xin_swordholder", "target": "trisolaris", "relation": "재침공 단행", "type": "triggers" },
+
+    { "source": "thomas_wade", "target": "lightspeed_ship", "relation": "개발 추진", "type": "supports" },
+    { "source": "cheng_xin", "target": "thomas_wade", "relation": "개발 중단 결정", "type": "conflict" },
+    { "source": "gravity_broadcast", "target": "trisolaris", "relation": "좌표 폭로 → 멸망", "type": "destroys" },
+    { "source": "gravity_broadcast", "target": "dimensional_strike", "relation": "태양계 좌표 노출 → 공격 유발", "type": "triggers" },
+    { "source": "two_vector_foil", "target": "dimensional_strike", "relation": "사용 무기", "type": "uses" },
+    { "source": "dimensional_strike", "target": "space_force", "relation": "태양계 멸망", "type": "destroys" },
+
+    { "source": "cheng_xin", "target": "ai_aa", "relation": "동행", "type": "ally" },
+    { "source": "cheng_xin", "target": "lightspeed_escape", "relation": "탈출", "type": "performs" },
+    { "source": "ai_aa", "target": "lightspeed_escape", "relation": "동행", "type": "performs" },
+    { "source": "lightspeed_ship", "target": "lightspeed_escape", "relation": "수단", "type": "enables" },
+    { "source": "stars_our_destination", "target": "lightspeed_escape", "relation": "경유지", "type": "location" },
+
+    { "source": "shi_qiang", "target": "luo_ji", "relation": "경호·조력", "type": "ally" },
+    { "source": "shi_qiang", "target": "cheng_xin", "relation": "조력", "type": "ally" },
+    { "source": "trisolaris", "target": "trisolaran_lord", "relation": "지도자", "type": "leads" },
+    { "source": "trisolaran_lord", "target": "ye_wenjie", "relation": "신호 수신·교신", "type": "communicates" }
+  ]
+}
